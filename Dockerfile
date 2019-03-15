@@ -6,6 +6,7 @@
 FROM jupyter/minimal-notebook:8d22c86ed4d7
 LABEL maintainer "Murat Keceli <keceli@gmail.com>"
 
+USER root
 RUN apt-get update && \
    apt-get install -y --no-install-recommends build-essential \
                     cmake \
@@ -20,6 +21,7 @@ RUN apt-get update && \
                     libgsl0-dev && \
    apt-get clean
 
+USER ${NB_USER}
 
 #RUN mkdir /container && \
 #    cd /container && \
