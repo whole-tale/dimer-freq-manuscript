@@ -23,6 +23,13 @@ RUN apt-get update && \
 
 USER ${NB_USER}
 
+COPY ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
+COPY ./custom.js /home/jovyan/.jupyter/custom/custom.js
+WORKDIR /home/jovyan/work
+
+COPY ./watchdog.py /tmp/watchdog.py
+HEALTHCHECK --interval=5s --timeout=15s --start-period=5s CMD python3 /tmp/watchdog.py
+
 #RUN mkdir /container && \
 #    cd /container && \
 #    git clone https://github.com/sodelab/dimer-freq-manuscript.git 
