@@ -15,7 +15,7 @@ RUN apt-get update && \
                     gfortran \
                     libopenblas-dev \
                     liblapack-dev \
-                    libgsl2 \
+                    libgsl23 \
                     vim \
                     bc \
                     libgsl0-dev && \
